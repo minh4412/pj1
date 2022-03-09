@@ -1,0 +1,35 @@
+body{
+	font-family: Tahoma;
+	font-size: 20px;
+	width: : 1000px;
+	margin: 0px auto;
+}
+#top{
+	background-color: black ;
+	height: 40px;
+	width: 100%;
+	color: white;
+}
+
+#content #left{
+	background: red;
+	width: 20%;
+	float: left;
+	min-height:600px; 
+}
+
+#content #right{
+	background: blue;
+	width: 80%;
+	float: left;
+	min-height:600px; 
+}
+
+#footer{
+	background: black;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	color: white;
+	clear: left;
+}

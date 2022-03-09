@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shop Điện Thoại</title>
+	<link rel="stylesheet" href="process.css">
+	<link rel="shortcut icon" href="../img/icon.png">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+      table, tr, td{
+        border: 1px solid black;
+      }
+      #user-info{
+        border: 1px solid #000;
+        margin: auto;
+        padding: 25px;
+      }
+      #user-info table {
+        margin: 10 auto 0 auto;
+        text-align: center;
+      }
+      #user-info h1{
+        text-align: center;
+      }
+	</style>
+</head>
+
+<body>
+	<?php 
+		$con = mysqli_connect("localhost","root","","pj1");
+		$search= "";
+		if(isset($_GET["search"])){
+			$search = $_GET["search"];
+		}
+		$sql= "SELECT * FROM user WHERE username LIKE '%$search%'" ;
+		$result = mysqli_query($con,$sql);
+		?>
+		<table id="user-listing" border="1">
+        <tr>
+          <th>Id</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Sđt</th>
+        </tr>
+		    <?php
+		    while ($row=mysqli_fetch_array($result)) { 
+		    ?>
+		    <tr>
+            <td><?php echo $row["id"]; ?></td> 
+            <td><?php echo $row["username"]; ?></td>
+            <td><?php echo $row["email"]; ?></td>
+            <td><?php echo $row["phone"]; ?></td>
+            <td><a href="quan-lu-user/sua-user.php?id=<?php echo $user["id"] ?>">Sửa</a></td>
+            <td><a href="quan-lu-user/xoa-san-pham.php?id=<?php echo $user["id"] ?>" onclick="return confirm('Bạn có chắc muốn xóa người dùng này khỏi danh sách không?')">Xóa</a></td>
+          </tr>
+		<?php } ?>
+		</table>
+    <?php
+      mysqli_close($con);
+    ?>
+</body>
+</html>
